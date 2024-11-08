@@ -1,5 +1,5 @@
 ################################################################################
-#	File:           Makefile for Library graph and program graph
+#	File:           Makefile for Library graph and program tao
 #   	Author:         Marion Bohr
 #   	Creation Date:  08/21/2024
 #   	Description:    Makefile 
