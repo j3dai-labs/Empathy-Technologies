@@ -3,7 +3,7 @@
         Author:         Marion Bohr
         Creation Date:  08/21/2024
         Description:    Library Header
-        				For determining the shortest route on your learning journey
+        		For determining the shortest route on your learning journey
                         By means of single source algorithm of Dijkstra
         Build:          make -f Makefile
 *******************************************************************************/
