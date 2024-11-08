@@ -1,10 +1,10 @@
 ################################################################################
 #	File:           Makefile for Library graph and program graph
-#   Author:         Marion Bohr
-#   Creation Date:  08/21/2024
-#   Description:    Makefile 
-#   				For building graph and tao
-#   Build:          make -f Makefile
+#   	Author:         Marion Bohr
+#   	Creation Date:  08/21/2024
+#   	Description:    Makefile 
+#   			For building graph and tao
+#   	Build:          make -f Makefile
 ################################################################################
 
 # Compiler and flags
