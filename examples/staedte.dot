@@ -1,0 +1,14 @@
+digraph G { 
+"Frankfurt" -> "Mannheim" [label=85]; 
+"Frankfurt" -> "Würzburg" [label=217]; 
+"Frankfurt" -> "Kassel" [label=173]; 
+"Mannheim" -> "Karlsruhe" [label=80]; 
+"Würzburg" -> "Erfurt" [label=186]; 
+"Würzburg" -> "Nürnberg" [label=103]; 
+"Kassel" -> "München" [label=502]; 
+"Stuttgart" -> "Nürnberg" [label=183]; 
+"Karlsruhe" -> "Augsburg" [label=250]; 
+"Nürnberg" -> "München" [label=167]; 
+"Augsburg" -> "München" [label=84]; 
+} 
+  
