@@ -6,9 +6,9 @@
                         By means of single source algorithm of Dijkstra.
                         Working with priority queue, optimal for sparse graphs.
                         Input:	Graph given as adjacent list in a dot-file and
-                        	   	start-node as a source 
+                        	start-node as a source 
                         Output:	distances, predecessors and shortest path from
-                        		source to each node in the graph
+                        	source to each node in the graph
         Build:          make -f Makefile
         Usage:			tao <dot-file> <start-node>
 *******************************************************************************/
