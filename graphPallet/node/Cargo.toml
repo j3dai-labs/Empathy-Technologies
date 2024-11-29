@@ -1,0 +1,18 @@
+[package]
+name = "node"
+version = "0.1.0"
+authors = ["Your Name <your.email@example.com>"]
+edition = "2018"
+license = "Unlicense"
+publish = false
+
+[dependencies]
+frame-support = { version = "3.0.0", default-features = false }
+frame-system = { version = "3.0.0", default-features = false }
+sp-runtime = { version = "3.0.0", default-features = false }
+polkadot-sdk = { version = "0.9.0", features = ["node"] }
+dijkstra = { path = "../pallets/dijkstra" }  # Verweis auf das dijkstra-Pallet
+
+[dev-dependencies]
+sp-wasm-builder = { version = "2.0.0", features = ["docker"] }
+
