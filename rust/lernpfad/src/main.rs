@@ -16,10 +16,11 @@ fn parse_dot_file(file_path: &str) -> Result<Graph, Box<dyn std::error::Error>> 
     let content = fs::read_to_string(file_path)?;
     let mut graph = Graph::new();
 
-    let re = Regex::new(r#"(\S+)\s*->\s*(\S+)\s*\[label=(\d+)\]"#)?;
+    // Aktualisierte Regex
+    let re = Regex::new(r#""?([\w\s]+)"?\s*->\s*"?([\w\s]+)"?\s*\[label="?(\d+)"?\]"#)?;
     for caps in re.captures_iter(&content) {
-        let from = caps[1].to_string();
-        let to = caps[2].to_string();
+        let from = caps[1].trim().to_string();
+        let to = caps[2].trim().to_string();
         let weight: i32 = i32::from_str(&caps[3])?;
 
         graph.add_edge(from, to, weight);

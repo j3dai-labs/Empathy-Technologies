@@ -20,12 +20,17 @@ impl Graph {
     }
 
     pub fn print(&self) {
-        for (node, neighbors) in &self.adjacency_list {
-            let neighbors_str: Vec<String> = neighbors
-                .iter()
-                .map(|(to, weight)| format!("{} (weight={})", to, weight))
-                .collect();
-            println!("{} -> {}", node, neighbors_str.join(", "));
+        let mut nodes: Vec<&String> = self.adjacency_list.keys().collect();
+        nodes.sort(); // Sortiere die Knotennamen in aufsteigender Reihenfolge
+
+        for node in nodes {
+            if let Some(neighbors) = self.adjacency_list.get(node) {
+                let neighbors_str: Vec<String> = neighbors
+                    .iter()
+                    .map(|(to, weight)| format!("{} (weight={})", to, weight))
+                    .collect();
+                println!("{} -> {}", node, neighbors_str.join(", "));
+            }
         }
     }
 
@@ -57,23 +62,29 @@ impl Graph {
         (distances, previous_nodes)
     }
 
-    pub fn print_shortest_paths(&self, start: &str) {
-        let (distances, previous_nodes) = self.dijkstra(start);
+	pub fn print_shortest_paths(&self, start: &str) {
+		let (distances, previous_nodes) = self.dijkstra(start);
 
-        println!("Shortest paths from node {}", start);
-        for (node, distance) in distances {
-            println!("Node: {}, Distance: {}", node, distance);
-            let mut path = Vec::new();
-            let mut current_node = Some(node.clone());
+		// Sammle alle Knoten und sortiere sie
+		let mut sorted_nodes: Vec<&String> = distances.keys().collect();
+		sorted_nodes.sort();
 
-            while let Some(current) = current_node {
-                path.push(current.clone());
-                current_node = previous_nodes.get(&current).cloned().unwrap_or(None);
-            }
+		println!("Shortest paths from node {}", start);
+		for node in sorted_nodes {
+		    let distance = distances[node];
+		    println!("Node: {}, Distance: {}", node, distance);
 
-            path.reverse();
-            println!("Path: {:?}", path);
-        }
-    }
+		    let mut path = Vec::new();
+		    let mut current_node = Some(node.clone());
+
+		    while let Some(current) = current_node {
+		        path.push(current.clone());
+		        current_node = previous_nodes.get(&current).cloned().unwrap_or(None);
+		    }
+
+		    path.reverse();
+		    println!("Path: {:?}", path);
+		}
+	}
 }
 
