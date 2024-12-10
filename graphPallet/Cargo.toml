@@ -1,23 +1,31 @@
-[workspace.package]
-license = "MIT-0"
-authors = ["Parity Technologies <admin@parity.io>"]
-homepage = "https://paritytech.github.io/polkadot-sdk/"
-repository = "https://github.com/paritytech/polkadot-sdk-minimal-template.git"
-edition = "2021"
+[package]
+name = "minimal-template-runtime"
+description = "A solochain runtime template built with Substrate, part of Polkadot Sdk."
+version = "0.1.0"
+license = "Unlicense"
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+edition.workspace = true
+publish = false
 
-[workspace]
-members = ["node", "pallets/template", "runtime"]
-resolver = "2"
+[dependencies]
+codec = { workspace = true }
+scale-info = { workspace = true }
+polkadot-sdk = { workspace = true, features = ["experimental", "pallet-balances", "pallet-sudo", "pallet-timestamp", "pallet-transaction-payment", "pallet-transaction-payment-rpc-runtime-api", "runtime"] }
+pallet-minimal-template.workspace = true
 
-[workspace.dependencies]
-minimal-template-runtime = { path = "./runtime", default-features = false }
-pallet-minimal-template = { path = "./pallets/template", default-features = false }
-clap = { version = "4.5.10" }
-docify = { version = "0.2.8" }
-futures = { version = "0.3.30" }
-futures-timer = { version = "3.0.2" }
-jsonrpsee = { version = "0.24.3" }
-polkadot-sdk = { version = "0.7.0", default-features = false }
-serde_json = { version = "1.0.127", default-features = false }
-codec = { version = "3.6.12", default-features = false, package = "parity-scale-codec" }
-scale-info = { version = "2.11.1", default-features = false }
+[build-dependencies]
+polkadot-sdk = { optional = true, workspace = true, features = ["substrate-wasm-builder"] }
+
+#[patch.crates-io]
+#schnorrkel = { version = "0.11.4" }  # Patch für schnorrkel
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"pallet-minimal-template/std",
+	"polkadot-sdk/std",
+	"scale-info/std",
+]
