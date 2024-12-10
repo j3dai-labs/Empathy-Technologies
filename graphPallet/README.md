@@ -9,3 +9,9 @@ To be noted/ to be added:
 	- Error handling: ensure that all error sources (such as invalid files, invalid node names or incorrect formats) are handled correctly to prevent unforeseen cancellations.
 	- Optimisation if necessary
  
+Input values:
+- a dot-file containing a adjacency list representing the graph
+- a start node in the graph (either an integer or a string, depending on the node names in the graph)
+
+Ouput values:
+- shortest paths in the graph beginning with the start node to all other reachable nodes given by the node names and the distances
