@@ -1,18 +1,34 @@
 [package]
-name = "node"
+name = "minimal-template-node"
+description = "A minimal Substrate-based Substrate node, ready for hacking."
 version = "0.1.0"
-authors = ["Your Name <your.email@example.com>"]
-edition = "2018"
 license = "Unlicense"
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+edition.workspace = true
 publish = false
+build = "build.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-frame-support = { version = "3.0.0", default-features = false }
-frame-system = { version = "3.0.0", default-features = false }
-sp-runtime = { version = "3.0.0", default-features = false }
-polkadot-sdk = { version = "0.9.0", features = ["node"] }
-dijkstra = { path = "../pallets/dijkstra" }  # Verweis auf das dijkstra-Pallet
+docify = { workspace = true }
+clap = { features = ["derive"], workspace = true }
+futures = { features = ["thread-pool"], workspace = true }
+futures-timer = { workspace = true }
+jsonrpsee = { features = ["server"], workspace = true }
+serde_json = { workspace = true, default-features = true }
+polkadot-sdk = { workspace = true, features = ["experimental", "node"] }
+minimal-template-runtime.workspace = true
 
-[dev-dependencies]
-sp-wasm-builder = { version = "2.0.0", features = ["docker"] }
+[build-dependencies]
+polkadot-sdk = { workspace = true, features = ["substrate-build-script-utils"] }
 
+[features]
+default = ["std"]
+std = [
+	"minimal-template-runtime/std",
+	"polkadot-sdk/std",
+]
