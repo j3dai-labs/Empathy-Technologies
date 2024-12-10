@@ -27,7 +27,7 @@ The core idea behind Empathy Technologies is to create personalized learning pat
 -   _Figma_: Front-end mockup
 -   _J3D.AI Platform:_ Integrating the Empathy Technologies framework for real-time usage.
 -   C and C++: To determine the shortest paths by means of e.g. Dijkstra algorithm
--   Rust and Polkadot-SDK: As well a single program to run in a stand alone way as an offchain worker pallet to be used within the Polkadot-SDK
+-   Rust and Polkadot-SDK: As well a single program to run in a stand alone way as an off-chain worker pallet to be used within the Polkadot-SDK
 
 ## Contribution Towards Public Goods
 
