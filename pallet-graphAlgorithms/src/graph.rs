@@ -1,14 +1,18 @@
 // graph.rs: Single source algorithms. Here: Dijkstra
 
-use std::collections::{BinaryHeap, HashMap};
+use std::collections::{BinaryHeap, HashMap}
 use regex::Regex;
 
+
 #[derive(Debug, Clone)]
+
 pub struct Graph {
     adjacency_list: HashMap<String, Vec<(String, i32)>>,
 }
 
+
 impl Graph {
+
     pub fn new() -> Self {
         Graph {
             adjacency_list: HashMap::new(),
@@ -30,6 +34,7 @@ impl Graph {
             let weight: i32 = caps[3].parse()?;
             self.add_edge(from, to, weight);
         }
+
         Ok(())
     }
 
@@ -49,6 +54,7 @@ impl Graph {
             if let Some(neighbors) = self.adjacency_list.get(&current_node) {
                 for (neighbor, weight) in neighbors {
                     let new_distance = current_distance + weight;
+
                     if new_distance < *distances.get(neighbor).unwrap_or(&i32::MAX) {
                         distances.insert(neighbor.clone(), new_distance);
                         previous_nodes.insert(neighbor.clone(), Some(current_node.clone()));
@@ -73,7 +79,7 @@ impl Graph {
                 path.reverse();
                 (node.clone(), path.join(" -> "), distance)
             })
+
             .collect()
     }
 }
-
