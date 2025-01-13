@@ -23,3 +23,4 @@ This pallet acts as an off-chain worker (OCW) in the Polkadot system. The shorte
 
 ## Examples
 
+In folder "examples" you find two dot-files: graph.dot contains an example with integers as node names, whereas staedte.dot contains the names of cities.
