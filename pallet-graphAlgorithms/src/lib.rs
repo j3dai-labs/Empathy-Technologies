@@ -82,6 +82,8 @@ pub mod pallet {
             log::info!("Shortest paths: {:?}", shortest_paths);
 
             ShortestPaths::<T>::put(shortest_paths.clone());
+            
+            // When shortest path calculated, then badge can be launched on-chain for this learner account.
             Self::deposit_event(Event::<T>::ShortestPathCalculated);
 
             Ok(())
